@@ -4,7 +4,7 @@
       "main": "index.js",
       "scripts": {
             "test": "jest --collectCoverage=false",
-            "grade": "jest --useStderr --json --outputFile=./tests/result.json",
+            "grade": "jest --useStderr --json --outputFile=./tests/result.json"
       },
       "devDependencies": {
             "jest": "^22.0.3"
