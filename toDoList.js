@@ -77,17 +77,28 @@ function addToDo() {
   // seleccionar el input con el id 'toDoInput'
   var toDoInput = document.querySelector("#toDoInput");
   // se agrega ese texto como argumento de un nuevo toDo
-  var nuevotodo = new ToDo(toDoInput.value);
+  if(!toDoInput.value==""){ var nuevotodo = new ToDo(toDoInput.value);
   // se agrega el nuevo toDo al array toDoItems y se borra el contenido del input
   toDoItems.push(nuevotodo);
-  toDoInput.value="";
+  toDoInput.value="";}
   // se actualiza la lista mostrada ejecutando la función displayToDos
   displayToDos();
 }
 
 // al botón con el id 'addButton' le agregamos un eventListener para que ejecute la función addToDo.
-const boton = document.querySelector('#addButton');
-boton.addEventListener ("click", addToDo);
+const addButton = document.querySelector('#addButton');
+addButton.addEventListener ("click", addToDo);
+console.log(addButton.event)
+
+
+var toDoInput = document.querySelector("#toDoInput");
+
+
+toDoInput.addEventListener("keyup", event => {
+  if(event.key !== "Enter")return;
+  addButton.click();
+  event.preventDefault();
+});
 
 function completeToDo(event) {
   // establece el index del toDo completado

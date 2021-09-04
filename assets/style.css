@@ -31,6 +31,7 @@ body {
   font-size: 24px;
   color: white;
   padding-right: 15px;
+  font-weight: bold;
 }
 
 #header a {
@@ -77,15 +78,20 @@ body {
   background: #0160A2;
   color: #FFF;
   font-size: .8rem;
-  padding: 0px 3px;
+  padding: 0px 3px;  
 }
+
+
+
 
 #toDoContainer {
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
   cursor: pointer;
+  margin: 10px;
 }
 
 .toDoShell {
