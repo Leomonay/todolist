@@ -8,3 +8,5 @@ Create a html page with an text input where you can add a task and by pressing a
 I also must have a checkbox.
 
 When the checkbox is checked checked, the task turns gray and crossed out.
+
+![projectThumbnail](https://raw.githubusercontent.com/Leomonay/todolist/main/assets/thumbnail.png)
