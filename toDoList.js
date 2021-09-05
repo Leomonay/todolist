@@ -1,4 +1,8 @@
+
 var toDoItems=[];
+if(localStorage.getItem("Leo's App to Do list")){
+  toDoItems=JSON.parse(localStorage.getItem("Leo's App to Do list"))
+}
  const ex1 = document.querySelector('#createdBy');
  ex1.innerHTML = ex1.innerHTML + " Leo Monay";
 
@@ -11,7 +15,12 @@ function ToDo (string) {
     this.complete = false;
 }
 // Se agrega el método completeToDo a la clase, que cambiará a true el estado completo
-ToDo.prototype.completeToDo = function() {this.complete=true};
+ToDo.prototype.completeToDo = function() {
+  this.complete=true
+};
+toDoItems.map(toDoItem=>{
+  toDoItem.completeToDo=ToDo.prototype.completeToDo
+})
 
 // Se crea la función buildToDo
 function buildToDo(todo,index) {
@@ -35,6 +44,19 @@ function buildToDo(todo,index) {
     check.addEventListener("click", completeToDo);
     check.className='completeCheckbox';
 
+
+  todo.index=index
+
+  var deleteButton=document.createElement('button')
+  deleteButton.className='deleteButton'
+  deleteButton.id=toDoText.id
+
+  deleteButton.addEventListener('click',()=>{
+    toDoItems=toDoItems.filter(e=>e.index!==parseInt(deleteButton.id))
+    localStorage.setItem("Leo's App to Do list", JSON.stringify(toDoItems))
+    displayToDos();
+  })
+
   // si el toDo está completo, se le asigna la clase completeText
   if (todo.complete){
     toDoText.className='completeText';
@@ -44,6 +66,7 @@ function buildToDo(todo,index) {
   //Se asigna toDoText y el check como hijo de toDoShell
   toDoShell.appendChild(toDoText);
   toDoShell.appendChild(check);
+  toDoShell.appendChild(deleteButton)
 
   return toDoShell;
 }
@@ -65,12 +88,13 @@ function displayToDos() {
   // aplica la funcion buildToDos sobre el arreglo de toDos
   var builds = buildToDos(toDoItems);
   // luego, se asigna cada elemento del array como un hijo de toDoContainer
+
   for (let i=0;i<builds.length;i++){
     toDoContainer.appendChild(builds[i]);
   }
 
 }
- 
+
 
 // La función addToDo crea un nuevo toDo con el texto del input.
 function addToDo() {
@@ -78,9 +102,13 @@ function addToDo() {
   var toDoInput = document.querySelector("#toDoInput");
   // se agrega ese texto como argumento de un nuevo toDo
   if(!toDoInput.value==""){ var nuevotodo = new ToDo(toDoInput.value);
+  
   // se agrega el nuevo toDo al array toDoItems y se borra el contenido del input
   toDoItems.push(nuevotodo);
   toDoInput.value="";}
+
+  localStorage.setItem("Leo's App to Do list", JSON.stringify(toDoItems))
+  
   // se actualiza la lista mostrada ejecutando la función displayToDos
   displayToDos();
 }
@@ -107,6 +135,8 @@ function completeToDo(event) {
   // se ejecuta el método 'completeTodo' en el elemento del index del arreglo toDoItems
   toDoItems[index].completeToDo();
   // se actualiza la lista mostrada de toDos
+  localStorage.setItem("Leo's App to Do list", JSON.stringify(toDoItems))
+
   displayToDos();
 }
 
