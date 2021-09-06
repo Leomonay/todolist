@@ -37,12 +37,22 @@ function buildToDo(todo,index) {
   // se asigna el index pasado como argumento como el id.
   toDoText.id = index;
 
+  //to make a customizable checkbock (later)
+    // var labelCheck = document.createElement('labelCheck');
+    // labelCheck.className = 'labelCheck';
+    // labelCheck.id = toDoText.id;
+    
     var check = document.createElement('INPUT');
     check.setAttribute("type","checkbox");
     check.id = toDoText.id;
     console.log('check.id: '+check.id)
     check.addEventListener("click", completeToDo);
     check.className='completeCheckbox';
+
+    // var checkMark = document.createElement('span');
+    // checkMark.className = 'checkMark';
+    // checkMark.id = toDoText.id;
+    // checkMark.innerHTML = '&#10003'
 
 
   todo.index=index
@@ -64,9 +74,14 @@ function buildToDo(todo,index) {
   }
 
   //Se asigna toDoText y el check como hijo de toDoShell
+  // labelCheck.appendChild(check);
+  // labelCheck.appendChild(checkMark);
+
   toDoShell.appendChild(toDoText);
+
   toDoShell.appendChild(check);
-  toDoShell.appendChild(deleteButton)
+  
+  toDoShell.appendChild(deleteButton);
 
   return toDoShell;
 }
