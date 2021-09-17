@@ -13,4 +13,4 @@ When the checkbox is checked checked, the task turns gray and crossed out.
 - saves tasks in localstorage to get them each time page is loaded. It's just to make it jsut a little more useful.
 - delete button to eliminate tasks when they become irrelevant.
 
-![projectThumbnail](https://raw.githubusercontent.com/Leomonay/todolist/main/assets/thumbnail.png)
+![projectThumbnail](https://github.com/Leomonay/todolist/blob/main/thumbnail.png)
